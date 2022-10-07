@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/react-results-system/static/css/main.6ac37686.css",
+    "main.js": "/react-results-system/static/js/main.443fa062.js",
+    "static/js/787.0a6fa4c3.chunk.js": "/react-results-system/static/js/787.0a6fa4c3.chunk.js",
+    "static/media/bakground.jpg": "/react-results-system/static/media/bakground.12dc77509f02007d026e.jpg",
+    "static/media/logo-icon.svg": "/react-results-system/static/media/logo-icon.9668a5fae60506a73a3a.svg",
+    "index.html": "/react-results-system/index.html",
+    "static/media/subjects-icon.svg": "/react-results-system/static/media/subjects-icon.d4ef94f44d357a8b5fce.svg",
+    "static/media/student-icon.svg": "/react-results-system/static/media/student-icon.1095580e7e3934b235d2.svg",
+    "static/media/edit-icon.svg": "/react-results-system/static/media/edit-icon.43a889138e23e59b60ba.svg",
+    "static/media/print-icon.svg": "/react-results-system/static/media/print-icon.c9ce9efa37bf3e082f1f.svg",
+    "static/media/statistics-icon.svg": "/react-results-system/static/media/statistics-icon.553625fb08862b10b1a0.svg",
+    "static/media/clock-icon.svg": "/react-results-system/static/media/clock-icon.8da03eb90ea4fd424b44.svg",
+    "static/media/user-icon.svg": "/react-results-system/static/media/user-icon.a5cd9be3ae7ba89e813e.svg",
+    "static/media/bookmark-icon.svg": "/react-results-system/static/media/bookmark-icon.46a8696fa3c7eb0420e2.svg",
+    "main.6ac37686.css.map": "/react-results-system/static/css/main.6ac37686.css.map",
+    "main.443fa062.js.map": "/react-results-system/static/js/main.443fa062.js.map",
+    "787.0a6fa4c3.chunk.js.map": "/react-results-system/static/js/787.0a6fa4c3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ac37686.css",
+    "static/js/main.443fa062.js"
+  ]
+}
