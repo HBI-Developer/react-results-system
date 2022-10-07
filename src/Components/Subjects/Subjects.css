@@ -1,0 +1,97 @@
+.subjects-page .container .subjects-table {
+  width: 90%;
+  margin: 10px auto;
+  position: relative;
+}
+.subjects-page .container .subjects-table .column {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  user-select: none;
+}
+.subjects-page .container .subjects-table .column > * {
+  min-width: 50%;
+  border: 0;
+}
+.subjects-page .container .subjects-table .column.title {
+  background-color: #5abf5e;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  user-select: none;
+}
+.subjects-page .container .subjects-table .column:not(.title) .subject {
+  padding: 5px 0;
+}
+.subjects-page
+  .container
+  .subjects-table
+  .column:not(.title)
+  .major
+  .options
+  > * {
+  padding: 5px 10px;
+}
+.subjects-page .container .subjects-table .nothing {
+  background-color: #fff;
+}
+.subjects-page .container .subjects-table .cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2705882353);
+}
+.subjects-page .container .subjects-table .cover .add-subject {
+  width: 80%;
+  margin: 20px auto 10px;
+}
+.subjects-page .container .subjects-table .cover .add-subject .inputs {
+  padding: 10px;
+  display: grid;
+  align-items: center;
+  background-color: #fff;
+  gap: 10px 10px;
+  grid-template-columns: auto 1fr;
+}
+.subjects-page .container .subjects-table .cover .add-subject .buttons {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  user-select: none;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+}
+.subjects-page .container .subjects-table .cover .add-subject .buttons > * {
+  min-width: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > *:hover {
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.2039215686);
+}
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > *:active {
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.2705882353);
+}

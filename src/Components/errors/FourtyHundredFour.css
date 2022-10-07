@@ -1,0 +1,22 @@
+.app > .error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #004d40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  color: #eee;
+  z-index: 99999;
+  user-select: none;
+  font-weight: bold;
+}
+
+.app > .error .number {
+  font-size: 29px;
+  text-align: center;
+}

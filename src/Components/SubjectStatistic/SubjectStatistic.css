@@ -1,0 +1,49 @@
+.subject {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-inline-end: 1px solid #aaa;
+}
+.subject:not(:nth-last-child(3)) {
+  border-bottom: 1px solid #aaa;
+}
+.statistic {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding: 5px 0;
+}
+.statistic > * {
+  height: 10px;
+  width: 50%;
+  transform-origin: right;
+  cursor: pointer;
+  border-radius: 0.25rem 0 0 0.25rem;
+  animation: 0.4s width-increasing linear;
+  transition: 0.2s all ease-in-out;
+}
+.statistic > *:hover {
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2705882353);
+}
+.statistic > *.active {
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.462745098);
+}
+.statistic > *.male {
+  background-color: #29b6f6;
+}
+.statistic > *.female {
+  background-color: #ec407a;
+}
+.statistic > *.all {
+  background-color: #66bb6a;
+}
+.percentage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-inline-start: 1px solid #aaa;
+}
+.percentage:not(:last-child) {
+  border-bottom: 1px solid #aaa;
+}

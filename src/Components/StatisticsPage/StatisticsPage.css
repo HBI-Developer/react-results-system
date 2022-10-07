@@ -1,0 +1,83 @@
+.statistics-page .container .subjects-statistics {
+  width: 80%;
+  margin: 20px auto;
+}
+.statistics-page .container .subjects-statistics .title {
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+.statistics-page .container .subjects-statistics .statistics-table {
+  margin: 10px 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  background-color: #fff;
+}
+.statistics-page .container .subjects-statistics .statistics-table .states {
+  grid-column: span 3;
+}
+
+.statistics-page .container .subjects-statistics .statistics-table .subject-statistic {
+  grid-column: span 3;
+}
+
+.statistics-page .container .subjects-statistics .key-statistics {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #aaa;
+  justify-content: space-evenly;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 20px 0;
+}
+.statistics-page .container .subjects-statistics .key-statistics .key {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+.statistics-page .container .subjects-statistics .key-statistics .key .square {
+  --background: #29b6f6;
+  background-color: var(--background, #272727);
+  width: 25px;
+  height: 25px;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+.statistics-page .container .gender-statistics {
+  margin: 30px auto;
+}
+.statistics-page .container .gender-statistics .title {
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+  margin-bottom: 15px;
+}
+.statistics-page .container .gender-statistics .statistics {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+  row-gap: 20px;
+  justify-content: space-evenly;
+}
+.statistics-page .container .nothing {
+  width: 95%;
+  grid-column: span 3;
+  margin: 10px auto;
+  text-align: center;
+  padding: 5px 0;
+  background-color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  color: #999;
+  user-select: none;
+  border-radius: 0.15rem;
+}

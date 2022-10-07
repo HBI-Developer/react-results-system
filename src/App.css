@@ -1,0 +1,832 @@
+:root {
+  --top-diamond-square-background: #ffc107;
+  --bottom-diamond-square-background: #f44336;
+  --left-diamond-square-background: #4caf50;
+  --right-diamond-square-background: #039be5;
+  --animation-duration: 1s;
+  --big-diamond-square-size: 30px;
+  --translate-pixels: calc(var(--big-diamond-square-size) / 2);
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo-icon {
+  background-image: url("images/logo-icon.svg");
+}
+
+.user-icon {
+  background-image: url("images/user-icon.svg");
+}
+
+.student-icon {
+  background-image: url("images/student-icon.svg");
+}
+
+.statistics-icon {
+  background-image: url("images/statistics-icon.svg");
+}
+
+.subjects-icon {
+  background-image: url("images/subjects-icon.svg");
+}
+
+.bookmark-icon {
+  background-image: url("images/bookmark-icon.svg");
+}
+
+.clock-icon {
+  background-image: url("images/clock-icon.svg");
+}
+
+.edit-icon {
+  background-image: url("images/edit-icon.svg");
+}
+
+.print-icon {
+  background-image: url("images/print-icon.svg");
+}
+
+.ministry-icon {
+  background-image: url("images/ministry-of-education.png");
+}
+
+.student-page,
+.degrees-page,
+.subjects-page,
+.students-page,
+.statistics-page,
+.admin-page {
+  background-color: rgba(0, 77, 64, 0.7);
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  position: relative;
+  grid-template-rows: auto 1fr;
+}
+
+.student-page .header,
+.admin-page .header {
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  column-gap: 20px;
+  font-size: 18px;
+  color: #fff;
+  user-select: none;
+  justify-content: flex-start;
+}
+.student-page .header > *,
+.admin-page .header > * {
+  width: fit-content;
+}
+.student-page .header .logout,
+.admin-page .header .logout {
+  font-size: 17px;
+  font-weight: bold;
+  margin-inline-start: auto;
+  height: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+.student-page .header .logout:hover,
+.admin-page .header .logout:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.student-page .header .logout:active,
+.admin-page .header .logout:active {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.student-page .container .degrees-table .table-head,
+.degrees-page .container .cover .add-degree .table-head,
+.degrees-page .container .final-degrees .table-head,
+.degrees-page .container .details-degrees .table-head,
+.subjects-page .container .subjects-table .cover .add-subject .table-head,
+.subjects-page .container .subjects-table .table-head,
+.students-page .container .students-table .table-head,
+.statistics-page .container .subjects-statistics .statistics-table .table-head {
+  background-color: #4caf50;
+  font-size: 17px;
+  user-select: none;
+  color: #fff;
+  user-select: none;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.degrees-page .container .final-degrees .pagination,
+.degrees-page .container .details-degrees .pagination,
+.students-page .container .students-table .pagination {
+  background-color: #4caf50;
+  color: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  user-select: none;
+  align-items: center;
+}
+.degrees-page .container .final-degrees .pagination > *,
+.degrees-page .container .details-degrees .pagination > *,
+.students-page .container .students-table .pagination > * {
+  padding: 10px 15px;
+}
+.degrees-page .container .final-degrees .pagination .prev,
+.degrees-page .container .details-degrees .pagination .prev,
+.students-page .container .students-table .pagination .prev,
+.degrees-page .container .final-degrees .pagination .next,
+.degrees-page .container .details-degrees .pagination .next,
+.students-page .container .students-table .pagination .next {
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+.degrees-page .container .final-degrees .pagination .prev.disabled,
+.degrees-page .container .details-degrees .pagination .prev.disabled,
+.students-page .container .students-table .pagination .prev.disabled,
+.degrees-page .container .final-degrees .pagination .next.disabled,
+.degrees-page .container .details-degrees .pagination .next.disabled,
+.students-page .container .students-table .pagination .next.disabled {
+  color: #aaa;
+  cursor: auto;
+}
+.degrees-page .container .final-degrees .pagination .prev:hover:not(.disabled),
+.degrees-page
+  .container
+  .details-degrees
+  .pagination
+  .prev:hover:not(.disabled),
+.students-page
+  .container
+  .students-table
+  .pagination
+  .prev:hover:not(.disabled),
+.degrees-page .container .final-degrees .pagination .next:hover:not(.disabled),
+.degrees-page
+  .container
+  .details-degrees
+  .pagination
+  .next:hover:not(.disabled),
+.students-page
+  .container
+  .students-table
+  .pagination
+  .next:hover:not(.disabled) {
+  box-shadow: inset 0 0 20px 20px rgba(255, 255, 255, 0.137254902);
+}
+.degrees-page .container .final-degrees .pagination .prev:active:not(.disabled),
+.degrees-page
+  .container
+  .details-degrees
+  .pagination
+  .prev:active:not(.disabled),
+.students-page
+  .container
+  .students-table
+  .pagination
+  .prev:active:not(.disabled),
+.degrees-page .container .final-degrees .pagination .next:active:not(.disabled),
+.degrees-page
+  .container
+  .details-degrees
+  .pagination
+  .next:active:not(.disabled),
+.students-page
+  .container
+  .students-table
+  .pagination
+  .next:active:not(.disabled) {
+  box-shadow: inset 0 0 20px 20px rgba(255, 255, 255, 0.2705882353);
+}
+.degrees-page .container .final-degrees .pagination .pages,
+.degrees-page .container .details-degrees .pagination .pages,
+.students-page .container .students-table .pagination .pages {
+  text-align: center;
+}
+.degrees-page .container .final-degrees .pagination .pages > *,
+.degrees-page .container .details-degrees .pagination .pages > *,
+.students-page .container .students-table .pagination .pages > * {
+  display: inline-block;
+}
+
+.degrees-page .container .final-degrees .footer-table,
+.degrees-page .container .details-degrees .footer-table,
+.subjects-page .container .subjects-table .footer-table,
+.students-page .container .students-table .footer-table {
+  background-color: #4caf50;
+  width: 100%;
+  height: 25px;
+}
+
+.subjects-page .container .subjects-table .column:not(.title) .major,
+.degrees-page .container .details-degrees .details .student .info-name .title,
+.students-page .container .students-table .student .info-name .title {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  height: 100%;
+}
+.subjects-page .container .subjects-table .column:not(.title) .major .options,
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .title
+  .options,
+.students-page .container .students-table .student .info-name .title .options {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.subjects-page .container .subjects-table .column:not(.title) .major .options *,
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .title
+  .options
+  *,
+.students-page
+  .container
+  .students-table
+  .student
+  .info-name
+  .title
+  .options
+  * {
+  font-size: 16px;
+  font-weight: bold;
+  width: 30px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+  transition: 0.2s all ease-in-out;
+}
+.subjects-page
+  .container
+  .subjects-table
+  .column:not(.title)
+  .major
+  .options
+  *
+  .icon,
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .title
+  .options
+  *
+  .icon,
+.students-page
+  .container
+  .students-table
+  .student
+  .info-name
+  .title
+  .options
+  *
+  .icon {
+  width: 15px;
+  height: 15px;
+}
+.subjects-page
+  .container
+  .subjects-table
+  .column:not(.title)
+  .major
+  .options
+  > *:hover,
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .title
+  .options
+  > *:hover,
+.students-page
+  .container
+  .students-table
+  .student
+  .info-name
+  .title
+  .options
+  > *:hover {
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.2039215686);
+}
+.subjects-page
+  .container
+  .subjects-table
+  .column:not(.title)
+  .major
+  .options
+  *:active,
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .title
+  .options
+  *:active,
+.students-page
+  .container
+  .students-table
+  .student
+  .info-name
+  .title
+  .options
+  *:active {
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.2705882353);
+}
+.subjects-page
+  .container
+  .subjects-table
+  .column:not(.title)
+  .major
+  .options
+  .edit,
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .title
+  .options
+  .edit,
+.students-page
+  .container
+  .students-table
+  .student
+  .info-name
+  .title
+  .options
+  .edit {
+  background-color: #4caf50;
+}
+.subjects-page
+  .container
+  .subjects-table
+  .column:not(.title)
+  .major
+  .options
+  .delete,
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .title
+  .options
+  .delete,
+.students-page
+  .container
+  .students-table
+  .student
+  .info-name
+  .title
+  .options
+  .delete {
+  background-color: #f44336;
+}
+
+.degrees-page .container .details-degrees .details .student .info-name,
+.students-page .container .students-table .student .info-name {
+  display: grid;
+  align-items: center;
+  font-size: 16px;
+  color: #272727;
+  font-weight: bold;
+  grid-template-columns: auto 1fr;
+}
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .student
+  .info-name
+  .open-arrow,
+.students-page .container .students-table .student .info-name .open-arrow {
+  padding: 10px;
+  user-select: none;
+  transform: rotateZ(90deg);
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+.degrees-page .container .details-degrees .details .student .info,
+.students-page .container .students-table .student .info {
+  display: none;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  color: #272727;
+  border-top: 1px solid #aaa;
+}
+.degrees-page .container .details-degrees .details .student .info *,
+.students-page .container .students-table .student .info * {
+  padding: 10px;
+  border-bottom: 1px solid #aaa;
+}
+.degrees-page .container .details-degrees .details .student .info .name,
+.students-page .container .students-table .student .info .name {
+  font-weight: bold;
+  border-inline-end: 1px solid #aaa;
+}
+.degrees-page .container .details-degrees .details .student .info .value,
+.students-page .container .students-table .student .info .value {
+  text-align: center;
+}
+.degrees-page
+  .container
+  .details-degrees
+  .details
+  .open.student
+  .info-name
+  .open-arrow,
+.students-page .container .students-table .open.student .info-name .open-arrow {
+  transform: rotateZ(270deg);
+}
+
+.degrees-page .container .details-degrees .nothing,
+.degrees-page .container .final-degrees .degrees .nothing,
+.subjects-page .container .subjects-table .nothing,
+.students-page .container .students-table .nothing {
+  padding: 10px;
+  font-size: 18px;
+  color: #999;
+  user-select: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+.degrees-page .container .details-degrees .add,
+.subjects-page .container .subjects-table .add,
+.students-page .container .students-table .add {
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+  background-color: #2196f3;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.2s all ease-in-out;
+}
+.degrees-page .container .details-degrees .add:hover,
+.subjects-page .container .subjects-table .add:hover,
+.students-page .container .students-table .add:hover {
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.2039215686);
+}
+.degrees-page .container .details-degrees .add:active,
+.subjects-page .container .subjects-table .add:active,
+.students-page .container .students-table .add:active {
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.2705882353);
+}
+
+.degrees-page .container .cover .add-degree .degrees input,
+.subjects-page .container .subjects-table .cover .add-subject .inputs input,
+.students-page .cover .student-inputs .inputs input {
+  font-size: 16px;
+  border-bottom: 2px solid #ddd;
+  padding: 5px 10px;
+  text-align: center;
+  transition: 0.2s all ease-in-out;
+}
+.degrees-page .container .cover .add-degree .degrees input[type="number"],
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .inputs
+  input[type="number"],
+.students-page .cover .student-inputs .inputs input[type="number"] {
+  -moz-appearance: textfield;
+}
+.degrees-page .container .cover .add-degree .degrees input:disabled,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .inputs
+  input:disabled,
+.students-page .cover .student-inputs .inputs input:disabled {
+  user-select: none;
+}
+.degrees-page
+  .container
+  .cover
+  .add-degree
+  .degrees
+  input::-webkit-inner-spin-button,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .inputs
+  input::-webkit-inner-spin-button,
+.students-page .cover .student-inputs .inputs input::-webkit-inner-spin-button,
+.degrees-page
+  .container
+  .cover
+  .add-degree
+  .degrees
+  input::-webkit-outer-spin-button,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .inputs
+  input::-webkit-outer-spin-button,
+.students-page .cover .student-inputs .inputs input::-webkit-outer-spin-button {
+  appearance: none;
+}
+.degrees-page .container .cover .add-degree .degrees input:focus,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .inputs
+  input:focus,
+.students-page .cover .student-inputs .inputs input:focus {
+  outline: none;
+  border-color: #aaa;
+}
+
+.degrees-page .container .cover .add-degree .degrees .error,
+.subjects-page .container .subjects-table .cover .add-subject .inputs .error,
+.students-page .cover .student-inputs .inputs .error {
+  grid-column: span 2;
+  font-size: 12px;
+  font-weight: bold;
+  color: #f44336;
+  user-select: none;
+  text-align: center;
+  display: none;
+}
+
+.degrees-page .container .cover .add-degree .buttons > *.send p,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > *.send
+  p,
+.students-page .cover .student-inputs .buttons > *.send p {
+  display: inline;
+}
+.degrees-page .container .cover .add-degree .buttons > *.send .dots,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > *.send
+  .dots,
+.students-page .cover .student-inputs .buttons > *.send .dots {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  direction: ltr;
+}
+.degrees-page .container .cover .add-degree .buttons > *.send .dots .dot,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > *.send
+  .dots
+  .dot,
+.students-page .cover .student-inputs .buttons > *.send .dots .dot {
+  width: 10px;
+  height: 10px;
+  animation: 1s element-jumping linear infinite;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.degrees-page
+  .container
+  .cover
+  .add-degree
+  .buttons
+  > *.send
+  .dots
+  .dot:nth-child(2),
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > *.send
+  .dots
+  .dot:nth-child(2),
+.students-page
+  .cover
+  .student-inputs
+  .buttons
+  > *.send
+  .dots
+  .dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.degrees-page
+  .container
+  .cover
+  .add-degree
+  .buttons
+  > *.send
+  .dots
+  .dot:nth-child(3),
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > *.send
+  .dots
+  .dot:nth-child(3),
+.students-page
+  .cover
+  .student-inputs
+  .buttons
+  > *.send
+  .dots
+  .dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.degrees-page .container .cover .add-degree .buttons > .waiting.send p,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > .waiting.send
+  p,
+.students-page .cover .student-inputs .buttons > .waiting.send p {
+  display: none;
+}
+.degrees-page .container .cover .add-degree .buttons > .waiting.send .dots,
+.subjects-page
+  .container
+  .subjects-table
+  .cover
+  .add-subject
+  .buttons
+  > .waiting.send
+  .dots,
+.students-page .cover .student-inputs .buttons > .waiting.send .dots {
+  display: flex;
+}
+
+.degrees-page .container .confirm,
+.subjects-page .container .subjects-table .confirm,
+.students-page .confirm {
+  width: 200px;
+  overflow: hidden;
+  border-radius: 0.15rem;
+  border: 1px solid #4caf50;
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.degrees-page .container .confirm .head,
+.subjects-page .container .subjects-table .confirm .head,
+.students-page .confirm .head {
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  text-align: center;
+  user-select: none;
+  padding: 5px;
+  width: 100%;
+}
+.degrees-page .container .confirm .body,
+.subjects-page .container .subjects-table .confirm .body,
+.students-page .confirm .body {
+  background-color: #fff;
+  text-align: center;
+}
+.degrees-page .container .confirm .body .message,
+.subjects-page .container .subjects-table .confirm .body .message,
+.students-page .confirm .body .message {
+  padding: 5px;
+}
+.degrees-page .container .confirm .body .buttons,
+.subjects-page .container .subjects-table .confirm .body .buttons,
+.students-page .confirm .body .buttons {
+  display: grid;
+  font-size: 16px;
+  grid-template-columns: repeat(2, 50%);
+}
+.degrees-page .container .confirm .body .buttons *,
+.subjects-page .container .subjects-table .confirm .body .buttons *,
+.students-page .confirm .body .buttons * {
+  padding: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+.degrees-page .container .confirm .body .buttons *:hover,
+.subjects-page .container .subjects-table .confirm .body .buttons *:hover,
+.students-page .confirm .body .buttons *:hover {
+  box-shadow: inset 0 0 20px 20px rgba(255, 255, 255, 0.1294117647);
+}
+.degrees-page .container .confirm .body .buttons *:active,
+.subjects-page .container .subjects-table .confirm .body .buttons *:active,
+.students-page .confirm .body .buttons *:active {
+  box-shadow: inset 0 0 20px 20px rgba(255, 255, 255, 0.2039215686);
+}
+.wait-table {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4039215686);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.wait-table .circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  animation: 0.5s rotation linear infinite;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(#4caf50 320deg, #eee 320deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent 80%, #fff 80%);
+  mask: radial-gradient(farthest-side, transparent 80%, #fff 80%);
+}
+@keyframes circle-shrink-grow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  34% {
+    transform: scale(1.2);
+  }
+  67% {
+    transform: scale(0.8);
+  }
+}
+@keyframes width-increasing {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
