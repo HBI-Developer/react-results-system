@@ -42,7 +42,7 @@ export default function App() {
   });
   
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/react-results-system">
       <div className="app">
       <StartPage />
       <Routes>
