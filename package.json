@@ -1,6 +1,6 @@
 {
-  "homepage": "https://hbi-developer.github.io/react-results-system/",
-  "name": "Results System",
+  "homepage": "https://hbi-developer.github.io/react-results-system",
+  "name": "react-results-system",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
