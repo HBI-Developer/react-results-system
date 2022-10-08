@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import fadeOutLoading from "../../Functions/fadeOutLoading";
+import CheckPage from "../CheckPage/CheckPage";
 import "./CertificatePage.css";
 
 const fetchData = (data) => ({
@@ -8,8 +8,6 @@ const fetchData = (data) => ({
   subjects: data.subjects.subjects,
   degrees: data.degrees.degrees,
 });
-
-const ssn = +sessionStorage.getItem('RRS_ssn');
 
 export default connect(fetchData)(
   class CertificatePage extends Component {
@@ -23,11 +21,13 @@ export default connect(fetchData)(
       statistics: [],
     };
 
+    ssn = +sessionStorage.getItem('RRS_ssn');
+
     theCertificate = () => {
       let { name, major, state, school } = this.props.students.filter(
-          (student) => student.ssn === ssn
+          (student) => student.ssn === this.ssn
         )[0],
-        degrees = this.props.degrees.filter((degree) => degree.ssn === ssn)[0],
+        degrees = this.props.degrees.filter((degree) => degree.ssn === this.ssn)[0],
         degreesTemplate = [],
         fullDegree = 0,
         statistics = [];
@@ -157,10 +157,6 @@ export default connect(fetchData)(
         degrees: degreesTemplate,
         statistics
       });
-
-      setTimeout(() => {
-        fadeOutLoading();
-      }, 0);
     };
 
     componentDidUpdate(next) {
@@ -178,6 +174,7 @@ export default connect(fetchData)(
     render() {
       return (
         <div className="print-certificate" key={this.state.studentName}>
+          <CheckPage />
           <div className="certificate">
             <div className="container">
               <div className="head">

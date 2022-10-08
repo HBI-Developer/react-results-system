@@ -1,24 +1,15 @@
 import React, { Component, Fragment } from "react";
-import StartPage from "../StartPage/StartPage";
 import "./ChooseLogin.css";
-import $ from 'jquery';
-import fadeInLoading from "../../Functions/fadeInLoading";
+import { Link } from "react-router-dom";
+import CheckPage from "../CheckPage/CheckPage";
 
 export default class ChooseLogin extends Component {
-  constructor() {
-    super();
-    $(".loading-screen").css('display', 'none');
-  }
-
-  choose = (type) => {
-    fadeInLoading(type);
-  };
   render() {
     return (
       <Fragment>
-        <StartPage />
         <div className="choose-page">
           <div className="header">
+            <CheckPage />
             <div className="logo">
               <div className="icon logo-icon"></div>
             </div>
@@ -28,14 +19,14 @@ export default class ChooseLogin extends Component {
             </div>
           </div>
           <div className="container">
-            <div className="admin" onClick={() => this.choose('admin-login')}>
+            <Link className="admin" to={'/admin-login'}>
               <div className="icon user-icon"></div>
               <div className="name">مسؤول النظام</div>
-            </div>
-            <div className="student" onClick={() => this.choose('student-login')}>
+            </Link>
+            <Link className="student" to={'/student-login'}>
               <div className="icon student-icon"></div>
               <div className="name">طالب</div>
-            </div>
+            </Link>
           </div>
         </div>
       </Fragment>

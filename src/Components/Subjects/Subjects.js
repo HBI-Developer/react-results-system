@@ -202,7 +202,7 @@ export default connect(fetchData, dataOperations)(class Subjects extends Compone
       <div className="subjects-page">
         <Header />
         <div className="container">
-          <PageName name={"المواد الدراسية"} backTo={'admin-page'} />
+          <PageName name={"المواد الدراسية"} backTo={'/admin-page'} />
 
           <div className="subjects-table">
             <div className="table-head">المواد الدراسية</div>

@@ -382,7 +382,7 @@ export default connect(fetchData, infoOperaions)(class StudentsPage extends Comp
       <div className="students-page">
         <Header />
         <div className="container">
-          <PageName name={"الطلاب"} backTo={'admin-page'} />
+          <PageName name={"الطلاب"} backTo={'/admin-page'} />
           <div className="students-table" key={'students_' + this.state.page}>
             <div className="table-head">جدول الطلاب</div>
             <CustomList key={'GS_'+ this.state.currentGenetalState} className={'states'} list={"states"} all={true} selected={this.state.currentGenetalState} selecting={this.changeState} />

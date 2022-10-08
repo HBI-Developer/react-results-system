@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { useNavigate } from 'react-router-dom';
 export default function fadeInLoading (type) {
     $('.loading-screen').fadeIn(400, () => {
         let pathName = '';
@@ -16,6 +17,8 @@ export default function fadeInLoading (type) {
             default: {}
         }
 
-        window.location.pathname = pathName;
+        const navigate = useNavigate();
+
+        navigate(pathName);
     });
 }

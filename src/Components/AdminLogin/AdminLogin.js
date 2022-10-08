@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import fadeInLoading from '../../Functions/fadeInLoading';
-import fadeOutLoading from "../../Functions/fadeOutLoading";
 import $ from 'jquery';
 import "./AdminLogin.css";
+import { Link, useNavigate } from "react-router-dom";
+import Header from "../Header/Header";
 
-export default class AdminLogin extends Component {
+class AdminLoginClass extends Component {
 
   check = () => {
     $('.error').removeAttr('style');
@@ -27,7 +27,7 @@ export default class AdminLogin extends Component {
         } else {
             sessionStorage.setItem('RRS_username', 'admin');
             sessionStorage.setItem('RRS_role', 'admin');
-            fadeInLoading('admin-page');
+            this.props.navigate('/admin-page');
         }
     }
 
@@ -35,19 +35,10 @@ export default class AdminLogin extends Component {
         $('.send-btn').removeClass('waiting');
     }, 0);
   };
-
-  componentDidMount() {
-    fadeOutLoading();
-  }
   render() {
     return (
       <div className="admin-login">
-        <div className="header">
-          <div className="logo">
-            <div className="icon logo-icon"></div>
-          </div>
-          <div className="title">نظام النتائج</div>
-        </div>
+        <Header />
         <form className="container" onSubmit={() => {}}>
           <div className="icon">
             <div className="icon user-icon"></div>
@@ -68,7 +59,7 @@ export default class AdminLogin extends Component {
               <div className="dot"></div>
             </div>
           </div>
-          <div className="btn back-btn" onClick={() => fadeInLoading('root')}>عودة</div>
+          <Link className="btn back-btn" to={'/'}>عودة</Link>
         </form>
         <div className="login-data">
           <div className="username">اسم المستخدم: admin</div>
@@ -77,4 +68,10 @@ export default class AdminLogin extends Component {
       </div>
     );
   }
+}
+
+export default function AdminLogin(props) {
+  const nav = useNavigate();
+
+  return <AdminLoginClass {...props} navigate={nav} />
 }

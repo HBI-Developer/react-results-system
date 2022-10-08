@@ -8,6 +8,10 @@
   --translate-pixels: calc(var(--big-diamond-square-size) / 2);
 }
 
+a {
+  text-decoration: none;
+}
+
 .icon {
   width: 100px;
   height: 100px;

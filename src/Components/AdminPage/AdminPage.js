@@ -5,6 +5,7 @@ import $ from 'jquery';
 import MainHeader from "../MainHeader/MainHeader";
 import fadeOutLoading from "../../Functions/fadeOutLoading";
 import fadeInLoading from "../../Functions/fadeInLoading";
+import { Link } from "react-router-dom";
 
 export default class AdminPage extends Component {
 
@@ -32,7 +33,7 @@ export default class AdminPage extends Component {
   render() {
     return (
       <div className="admin-page">
-        <MainHeader clicking={this.goto} type={'admin-login'} />
+        <MainHeader type={'admin'} />
         <div className="container">
           <div className="sidebar">
             <div className="option clock" onClick={this.showClock}>
@@ -43,22 +44,22 @@ export default class AdminPage extends Component {
             <div className="icon clock-icon"></div>
           </div>
           <div className="options">
-            <div className="option statistics" data-option="statistics" onClick={() => this.goto('statistics')}>
+            <Link className="option statistics" data-option="statistics" to={'/statistics'}>
               <div className="icon statistics-icon"></div>
               <div className="name">احصائيات</div>
-            </div>
-            <div className="option students" data-option="students" onClick={() => this.goto('students')}>
+            </Link>
+            <Link className="option students" data-option="students" to={'/students'}>
               <div className="icon student-icon"></div>
               <div className="name">الطلاب</div>
-            </div>
-            <div className="option subjects" data-option="subjects" onClick={() => this.goto('subjects')}>
+            </Link>
+            <Link className="option subjects" data-option="subjects" to={'/subjects'}>
               <div className="icon subjects-icon"></div>
               <div className="name">المقررات الدراسية</div>
-            </div>
-            <div className="option degrees" data-option="degrees" onClick={() => this.goto('degrees')}>
+            </Link>
+            <Link className="option degrees" data-option="degrees" to={'/degrees'}>
               <div className="icon bookmark-icon"></div>
               <div className="name">الدرجات</div>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="cover" onClick={this.hideClock}>

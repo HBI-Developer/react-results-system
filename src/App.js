@@ -16,8 +16,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChooseLogin from "./Components/ChooseLogin/ChooseLogin";
 import AdminLogin from "./Components/AdminLogin/AdminLogin";
 import StudentLogin from "./Components/StudentLogin/StudentLogin";
-import fadeInLoading from "./Functions/fadeInLoading";
 import FourtyHundredFour from "./Components/errors/FourtyHundredFour";
+import StartPage from "./Components/StartPage/StartPage";
 
 export default function App() {
   const disp = useDispatch();
@@ -39,55 +39,25 @@ export default function App() {
       disp(initDegreesData(degrees));
       disp(initSubjectsData(subjects));
     });
-
-    let loginPaths = ['/', '/admin-login', '/student-login'];
-
-    if (loginPaths.indexOf(window.location.pathname) !== -1) {
-      if (sessionStorage.getItem('RRS_username') !== null) {
-        switch (sessionStorage.getItem('RRS_role')) {
-          case 'admin': {
-            fadeInLoading('admin-page');
-          break;}
-
-          case 'student': {
-            fadeInLoading('student-page');
-          break;}
-
-          default: {}
-        }
-      }
-    } else {
-      if (sessionStorage.getItem('RRS_username') === null) {
-          fadeInLoading('root');
-      } else {
-        if (window.location.pathname === '/student-page' || window.location.pathname === '/certificate') {
-          if (sessionStorage.getItem('RRS_role') === 'admin') {
-            fadeInLoading('admin-page');
-          }
-        } else {
-          if (sessionStorage.getItem('RRS_role') === 'student') {
-            fadeInLoading('student-page');
-          }
-        }
-      }
-    }
   });
   
   return (
     <BrowserRouter>
       <div className="app">
+      <StartPage />
       <Routes>
         <Route exact path='/' element={<ChooseLogin />} />
         <Route path='/admin-login' element={<AdminLogin />} />
         <Route path='/student-login' element={<StudentLogin />} />
+        <Route path='/admin-page' element={<AdminPage />} />
+        <Route path='/student-page' element={<StudentPage />} />
         <Route path='/statistics' element={<StatisticsPage />} />
         <Route path='/students' element={<StudentsPage />} />
         <Route path='/subjects' element={<Subjects />} />
         <Route path='/degrees' element={<DegreesPage />} />
-        <Route path='/admin-page' element={<AdminPage />} />
         <Route path='/student-page' element={<StudentPage />} />
         <Route path='/certificate' element={<CertificatePage />} />
-        <Route path='/:s' element={<FourtyHundredFour />} />
+        <Route path='*' element={<FourtyHundredFour />} />
       </Routes>
     </div>
     </BrowserRouter>

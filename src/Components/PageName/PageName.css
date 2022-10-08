@@ -12,6 +12,7 @@
   .to-back .back-arrow {
     padding: 10px 15px;
     cursor: pointer;
+    color: #eee;
     transition: 0.2s all ease-in-out;
   }
   .to-back.no-arrow .back-arrow {

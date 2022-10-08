@@ -182,7 +182,7 @@ export default connect(fetchData)(class StatisticsPage extends Component {
       <div className="statistics-page">
         <Header />
         <div className="container">
-          <PageName name={"الإحصائيات"} backTo={'admin-page'} />
+          <PageName name={"الإحصائيات"} backTo={'/admin-page'} />
 
           {this.state.template}
 

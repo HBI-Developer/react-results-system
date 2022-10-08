@@ -93,6 +93,7 @@
 .student-page .container .degrees-table .print-button {
   background-color: #4caf50;
   width: 100%;
+  display: block;
   cursor: pointer;
   padding: 10px;
   transition: 0.2s all ease-in-out;

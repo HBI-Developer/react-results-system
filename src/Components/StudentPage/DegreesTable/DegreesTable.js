@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import fadeInLoading from "../../../Functions/fadeInLoading";
+import { Link } from "react-router-dom";
 import PageName from "../../PageName/PageName";
 
 const fetchData = (data) => ({
@@ -56,7 +56,7 @@ export default connect(fetchData)(class DegreesTable extends Component {
   render() {
     return (
       <Fragment>
-        <PageName name={`الطالب: ${this.state.studentName}`} arrow={"hidden"} />
+        <PageName name={`الطالب: ${this.state.studentName}`} backTo={'/student-page'} arrow={"hidden"} />
 
         <div className="degrees-table">
           <div className="table-head">الدرجات</div>
@@ -71,9 +71,9 @@ export default connect(fetchData)(class DegreesTable extends Component {
               <div className="column title">{this.state.fullDegree}%</div>
             </div>
           </div>
-          <div className="print-button" onClick={() => fadeInLoading('certificate')}>
+          <Link className="print-button" to={'/certificate'}>
             <div className="icon print-icon"></div>
-          </div>
+          </Link>
         </div>
       </Fragment>
     );

@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import fadeOutLoading from '../../Functions/fadeOutLoading';
+import { useSelector } from 'react-redux';
 import $ from 'jquery';
 import './StudentLogin.css';
+import { Link, useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
 
-const fetchData = (data) => ({
-  students: data.students.students,
-  degrees: data.degrees.degrees
-});
-
-export default connect(fetchData)(class StudentLogin extends Component {
+class StudentLoginClass extends Component {
   state = {
     ssn: 0,
     sittingNumber: 0
@@ -40,9 +36,7 @@ export default connect(fetchData)(class StudentLogin extends Component {
             sessionStorage.setItem('RRS_username', student.name);
             sessionStorage.setItem('RRS_ssn', student.ssn);
             sessionStorage.setItem('RRS_role', 'student');
-            $('.loading-screen').fadeIn(400, () => {
-                window.location.pathname = '/student-page';
-            });
+            this.props.navigate('/student-page');
         }
       } else {
         $('.error').text('لا يمكن تسجيل الدخول حالياً، رجاءً عد لاحقاً.').css('display', 'block');
@@ -78,10 +72,6 @@ export default connect(fetchData)(class StudentLogin extends Component {
           sittingNumber: 'لا يوجد'
         });
       }
-
-      setTimeout(() => {
-        fadeOutLoading();
-      }, 0);
     }
   }
 
@@ -100,12 +90,7 @@ export default connect(fetchData)(class StudentLogin extends Component {
   render() {
     return (
     <div className="student-login">
-        <div className="header">
-        <div className="logo">
-            <div className="icon logo-icon"></div>
-        </div>
-        <div className="title">نظام النتائج</div>
-        </div>
+        <Header />
         <form className="container" onSubmit={() => {}}>
         <div className="icon">
         <div className="icon student-icon"></div>
@@ -122,7 +107,7 @@ export default connect(fetchData)(class StudentLogin extends Component {
                 <div className="dot"></div>
             </div>
         </div>
-        <div className="btn back-btn" onClick={() => {window.location.pathname = '/'}}>عودة</div>
+        <Link className="btn back-btn" to={'/'}>عودة</Link>
         </form>
         <div className="login-data">
         <div className="username">الرقم الوطني: {this.state.ssn}</div>
@@ -131,4 +116,12 @@ export default connect(fetchData)(class StudentLogin extends Component {
     </div>
     )
   }
-})
+};
+
+export default function StudentLogin(props) {
+  let nav = useNavigate(),
+    {students} = useSelector(state => state.students),
+    {degrees} = useSelector(state => state.degrees);
+
+  return <StudentLoginClass {...props} navigate={nav} students={students} degrees={degrees} />;
+}
