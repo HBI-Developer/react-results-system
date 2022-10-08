@@ -42,21 +42,21 @@ export default function App() {
   });
   
   return (
-    <BrowserRouter basename="/react-results-system">
+    <BrowserRouter basename="https://hbi-developer.github.io/react-results-system">
       <div className="app">
       <StartPage />
       <Routes>
-        <Route exact path='/react-results-system/' element={<ChooseLogin />} />
-        <Route path='/react-results-system/admin-login' element={<AdminLogin />} />
-        <Route path='/react-results-system/student-login' element={<StudentLogin />} />
-        <Route path='/react-results-system/admin-page' element={<AdminPage />} />
-        <Route path='/react-results-system/student-page' element={<StudentPage />} />
-        <Route path='/react-results-system/statistics' element={<StatisticsPage />} />
-        <Route path='/react-results-system/students' element={<StudentsPage />} />
-        <Route path='/react-results-system/subjects' element={<Subjects />} />
-        <Route path='/react-results-system/degrees' element={<DegreesPage />} />
-        <Route path='/react-results-system/student-page' element={<StudentPage />} />
-        <Route path='/react-results-system/certificate' element={<CertificatePage />} />
+        <Route exact path='/' element={<ChooseLogin />} />
+        <Route path='/admin-login' element={<AdminLogin />} />
+        <Route path='/student-login' element={<StudentLogin />} />
+        <Route path='/admin-page' element={<AdminPage />} />
+        <Route path='/student-page' element={<StudentPage />} />
+        <Route path='/statistics' element={<StatisticsPage />} />
+        <Route path='/students' element={<StudentsPage />} />
+        <Route path='/subjects' element={<Subjects />} />
+        <Route path='/degrees' element={<DegreesPage />} />
+        <Route path='/student-page' element={<StudentPage />} />
+        <Route path='/certificate' element={<CertificatePage />} />
         <Route path='*' element={<FourtyHundredFour />} />
       </Routes>
     </div>
