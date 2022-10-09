@@ -21,13 +21,15 @@ export default connect(fetchData)(
       statistics: [],
     };
 
-    ssn = +sessionStorage.getItem('RRS_ssn');
+    ssn = +sessionStorage.getItem("RRS_ssn");
 
     theCertificate = () => {
       let { name, major, state, school } = this.props.students.filter(
           (student) => student.ssn === this.ssn
         )[0],
-        degrees = this.props.degrees.filter((degree) => degree.ssn === this.ssn)[0],
+        degrees = this.props.degrees.filter(
+          (degree) => degree.ssn === this.ssn
+        )[0],
         degreesTemplate = [],
         fullDegree = 0,
         statistics = [];
@@ -97,7 +99,7 @@ export default connect(fetchData)(
         inCountry = (inCountry / inCountryNumber).toFixed(2);
 
         statistics.push(
-          <div className="box" key={'statistics_' + i[0]}>
+          <div className="box" key={"statistics_" + i[0]}>
             <div className="title">{subjectName}</div>
             <div className="staticstic">
               <div className="row">معدل الطالب</div>
@@ -155,18 +157,18 @@ export default connect(fetchData)(
         school,
         fullDegree,
         degrees: degreesTemplate,
-        statistics
+        statistics,
       });
     };
 
     componentDidUpdate(next) {
-      if (next.degrees !== this.props.degrees) {
+      if (next.degrees !== this.props.degrees && this.ssn) {
         this.theCertificate();
       }
     }
 
     componentDidMount() {
-      if (this.props.degrees.length) {
+      if (this.props.degrees.length && this.ssn) {
         this.theCertificate();
       }
     }
@@ -209,9 +211,7 @@ export default connect(fetchData)(
                   </div>
                 </div>
 
-                <div className="statistics">
-                  {this.state.statistics}
-                </div>
+                <div className="statistics">{this.state.statistics}</div>
               </div>
             </div>
             <div className="warning">

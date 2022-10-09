@@ -19,11 +19,11 @@ export default class ChooseLogin extends Component {
             </div>
           </div>
           <div className="container">
-            <Link className="admin" to={'/admin-login'}>
+            <Link className="admin" to={"/admin-login"}>
               <div className="icon user-icon"></div>
               <div className="name">مسؤول النظام</div>
             </Link>
-            <Link className="student" to={'/student-login'}>
+            <Link className="student" to={"/student-login"}>
               <div className="icon student-icon"></div>
               <div className="name">طالب</div>
             </Link>

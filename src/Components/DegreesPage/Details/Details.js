@@ -3,9 +3,9 @@ import React, { Component } from "react";
 export default class Details extends Component {
   degrees = [];
 
-  opening = ev => {
+  opening = (ev) => {
     this.props.opening(ev);
-  }
+  };
 
   render() {
     for (let i = 0; i < this.props.info.degrees.length; i++) {
@@ -26,14 +26,24 @@ export default class Details extends Component {
       <div className="details">
         <div className="student" data-ssn={this.props.info.ssn}>
           <div className="info-name">
-            <div className="open-arrow" onClick={this.opening}>{"<"}</div>
+            <div className="open-arrow" onClick={this.opening}>
+              {"<"}
+            </div>
             <div className="title">
               <div className="name">{this.props.info.name}</div>
               <div className="options">
-                <div className="edit" onClick={() => this.props.editing(this.props.info.ssn)}>
+                <div
+                  className="edit"
+                  onClick={() => this.props.editing(this.props.info.ssn)}
+                >
                   <div className="icon edit-icon"></div>
                 </div>
-                <div className="delete" onClick={() => this.props.removing(this.props.info.ssn)}>&minus;</div>
+                <div
+                  className="delete"
+                  onClick={() => this.props.removing(this.props.info.ssn)}
+                >
+                  &minus;
+                </div>
               </div>
             </div>
           </div>

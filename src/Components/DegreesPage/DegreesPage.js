@@ -594,7 +594,7 @@ export default connect(
         <div className="degrees-page">
           <Header />
           <div className="container">
-            <PageName name={"الدرجات"} backTo={'/admin-page'} />
+            <PageName name={"الدرجات"} backTo={"/admin-page"} />
 
             <div
               className="details-degrees"

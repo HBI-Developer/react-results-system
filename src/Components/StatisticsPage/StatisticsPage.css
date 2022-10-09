@@ -19,7 +19,11 @@
   grid-column: span 3;
 }
 
-.statistics-page .container .subjects-statistics .statistics-table .subject-statistic {
+.statistics-page
+  .container
+  .subjects-statistics
+  .statistics-table
+  .subject-statistic {
   grid-column: span 3;
 }
 

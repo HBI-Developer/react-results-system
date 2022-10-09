@@ -808,7 +808,8 @@ a {
   mask: radial-gradient(farthest-side, transparent 80%, #fff 80%);
 }
 @keyframes circle-shrink-grow {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   34% {

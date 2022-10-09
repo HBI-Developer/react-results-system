@@ -16,7 +16,13 @@ export default class TablesPagination extends Component {
             {"<"}
           </div>
           <div className="pages">
-            <NumberInput className={'current'} min={1} max={Math.ceil(this.props.items / this.props.limit)} default={this.props.current} bluring={(ev) => this.props.clicking(ev, "write")} />
+            <NumberInput
+              className={"current"}
+              min={1}
+              max={Math.ceil(this.props.items / this.props.limit)}
+              default={this.props.current}
+              bluring={(ev) => this.props.clicking(ev, "write")}
+            />
             <span>/</span>
             <div className="pages-number">
               {Math.ceil(this.props.items / this.props.limit)}

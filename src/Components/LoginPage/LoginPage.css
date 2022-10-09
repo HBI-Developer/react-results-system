@@ -192,23 +192,23 @@
 }
 
 @media (max-width: 990px) {
-    .login-page .choose-page .container {
-        flex-direction: column;
-        row-gap: 20px;
-      }
-      .login-page .choose-page .container div {
-        width: 80%;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        border-radius: 0.15rem;
-        align-items: center;
-        column-gap: 20px;
-        padding: 15px;
-      }
-      .login-page .choose-page .container div svg {
-        width: 75px;
-      }
-      .admin-page .header .logo > .icon {
-        width: 60px;
-      }
+  .login-page .choose-page .container {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .login-page .choose-page .container div {
+    width: 80%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    border-radius: 0.15rem;
+    align-items: center;
+    column-gap: 20px;
+    padding: 15px;
+  }
+  .login-page .choose-page .container div svg {
+    width: 75px;
+  }
+  .admin-page .header .logo > .icon {
+    width: 60px;
+  }
 }

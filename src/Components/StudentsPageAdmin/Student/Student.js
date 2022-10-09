@@ -5,14 +5,25 @@ export default class Student extends Component {
     return (
       <div className="student">
         <div className="info-name">
-          <div className="open-arrow" onClick={this.props.clicking}>{"<"}</div>
+          <div className="open-arrow" onClick={this.props.clicking}>
+            {"<"}
+          </div>
           <div className="title">
             <div className="name">{this.props.info.name}</div>
             <div className="options">
-              <div className="edit" onClick={ev => document.querySelector('.confirm').style.display !== 'block' ? this.props.editing(ev) : ''}>
+              <div
+                className="edit"
+                onClick={(ev) =>
+                  document.querySelector(".confirm").style.display !== "block"
+                    ? this.props.editing(ev)
+                    : ""
+                }
+              >
                 <div className="icon edit-icon"></div>
               </div>
-              <div className="delete" onClick={this.props.removing}>{"-"}</div>
+              <div className="delete" onClick={this.props.removing}>
+                {"-"}
+              </div>
             </div>
           </div>
         </div>

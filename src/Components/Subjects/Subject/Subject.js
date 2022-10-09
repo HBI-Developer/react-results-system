@@ -13,7 +13,9 @@ export default class Subject extends Component {
             <div className="edit" onClick={this.props.editing}>
               <div className="icon edit-icon"></div>
             </div>
-            <div className="delete" onClick={this.props.confirm}>{"-"}</div>
+            <div className="delete" onClick={this.props.confirm}>
+              {"-"}
+            </div>
           </div>
         </div>
       </div>

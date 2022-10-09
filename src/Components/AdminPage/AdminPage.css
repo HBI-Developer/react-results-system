@@ -201,7 +201,7 @@
   font-size: 16px;
   user-select: none;
   padding: 10px 0;
-  transition: .2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
 }
 .admin-page .cover .time-picker .days {
   display: flex;

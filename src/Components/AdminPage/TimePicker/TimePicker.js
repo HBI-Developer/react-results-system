@@ -2,21 +2,78 @@ import React, { Component } from "react";
 
 export default class TimePicker extends Component {
   state = {
-    year: sessionStorage.getItem("RRS_year") ? +sessionStorage.getItem("RRS_year") : new Date().getFullYear(),
-    month: sessionStorage.getItem("RRS_month") ? +sessionStorage.getItem("RRS_month") : new Date().getMonth(),
-    day: sessionStorage.getItem("RRS_day") ? +sessionStorage.getItem("RRS_day") : new Date().getDate(),
-    hour: sessionStorage.getItem("RRS_hour") ? +sessionStorage.getItem("RRS_hour") : 0,
-    minute: sessionStorage.getItem("RRS_minute") ? +sessionStorage.getItem("RRS_minute") : 0,
+    year: sessionStorage.getItem("RRS_year")
+      ? +sessionStorage.getItem("RRS_year")
+      : new Date().getFullYear(),
+    month: sessionStorage.getItem("RRS_month")
+      ? +sessionStorage.getItem("RRS_month")
+      : new Date().getMonth(),
+    day: sessionStorage.getItem("RRS_day")
+      ? +sessionStorage.getItem("RRS_day")
+      : new Date().getDate(),
+    hour: sessionStorage.getItem("RRS_hour")
+      ? +sessionStorage.getItem("RRS_hour")
+      : 0,
+    minute: sessionStorage.getItem("RRS_minute")
+      ? +sessionStorage.getItem("RRS_minute")
+      : 0,
     disabledYear: 0,
     disabledMonth: 0,
     templateDay: [],
   };
 
-  decreaseTime = null;
+  decreaseTimeFunction = () => {
+    if (
+      (+sessionStorage.getItem("RRS_year") ||
+        +sessionStorage.getItem("RRS_month") ||
+        +sessionStorage.getItem("RRS_day") ||
+        +sessionStorage.getItem("RRS_hour") ||
+        +sessionStorage.getItem("RRS_minute")) &&
+      document.querySelector(".cover .time-picker .until-open .counter")
+    ) {
+      let [year, month, day, hour, minute] = [
+          +sessionStorage.getItem("RRS_year") ?? new Date().getFullYear(),
+          +sessionStorage.getItem("RRS_month") + 1 ?? new Date().getMonth() + 1,
+          +sessionStorage.getItem("RRS_day") ?? new Date().getDate(),
+          +sessionStorage.getItem("RRS_hour") ?? 0,
+          +sessionStorage.getItem("RRS_minute") ?? 0,
+        ],
+        diff =
+          new Date(`${year}-${month}-${day} ${hour}:${minute}`).getTime() -
+          new Date().getTime();
+
+      if (diff > 0) {
+        let [days, hours, minutes, seconds] = [
+          Math.floor(diff / 86400000),
+          Math.floor((diff % 86400000) / 3600000),
+          Math.floor((diff % 3600000) / 60000),
+          Math.floor((diff % 60000) / 1000),
+        ];
+
+        document.querySelector(
+          ".cover .time-picker .until-open .counter"
+        ).innerText = `${days < 10 ? "0" + days : days}:${
+          hours < 10 ? "0" + hours : hours
+        }:${minutes < 10 ? "0" + minutes : minutes}:${
+          seconds < 10 ? "0" + seconds : seconds
+        }`;
+
+        setTimeout(() => {
+          if (diff > 0) {
+            this.decreaseTimeFunction();
+          }
+        }, 400);
+      }
+    }
+  };
 
   changeTemplateDay = () => {
     let temp = [],
-      last = new Date(this.state.year, parseInt(this.state.month) + 1, 0).getDate(),
+      last = new Date(
+        this.state.year,
+        parseInt(this.state.month) + 1,
+        0
+      ).getDate(),
       day = this.state.day < last ? this.state.day : last,
       disabledDay = 0,
       disabledMonth = 0,
@@ -145,10 +202,13 @@ export default class TimePicker extends Component {
     }, 0);
   };
 
-  changeDay = ev => {
-    if (ev.target.classList.value.indexOf("day") > -1 && ev.target.classList.value.indexOf("disabled") === -1) {
+  changeDay = (ev) => {
+    if (
+      ev.target.classList.value.indexOf("day") > -1 &&
+      ev.target.classList.value.indexOf("disabled") === -1
+    ) {
       this.setState({
-        day: +ev.target.innerText
+        day: +ev.target.innerText,
       });
 
       setTimeout(() => {
@@ -157,7 +217,7 @@ export default class TimePicker extends Component {
     }
   };
 
-  changeHour = ev => {
+  changeHour = (ev) => {
     let hour = 0;
     if (ev.target.value < 24 && ev.target.value > 0) {
       hour = ev.target.value;
@@ -168,14 +228,14 @@ export default class TimePicker extends Component {
     }
 
     if (hour < 10) {
-      ev.target.value = "0" + hour
+      ev.target.value = "0" + hour;
     } else {
-      ev.target.value = hour
+      ev.target.value = hour;
     }
 
     setTimeout(() => {
       this.setState({
-        hour
+        hour,
       });
 
       sessionStorage.setItem("RRS_hour", hour);
@@ -184,9 +244,9 @@ export default class TimePicker extends Component {
         this.changeWaintingTime();
       }, 0);
     }, 0);
-  }
+  };
 
-  changeMinute = ev => {
+  changeMinute = (ev) => {
     let minute = 0,
       val = +ev.target.value;
     if (val < 60 && val >= 0) {
@@ -198,14 +258,14 @@ export default class TimePicker extends Component {
     }
 
     if (minute < 10) {
-      ev.target.value = "0" + minute
+      ev.target.value = "0" + minute;
     } else {
-      ev.target.value = minute
+      ev.target.value = minute;
     }
 
     setTimeout(() => {
       this.setState({
-        minute
+        minute,
       });
 
       sessionStorage.setItem("RRS_minute", minute);
@@ -214,10 +274,14 @@ export default class TimePicker extends Component {
         this.changeWaintingTime();
       }, 0);
     }, 0);
-  }
+  };
 
   changeWaintingTime = () => {
-    let waitingDate = new Date(`${this.state.year}-${this.state.month + 1}-${this.state.day} ${this.state.hour}:${this.state.minute}`).getTime(),
+    let waitingDate = new Date(
+        `${this.state.year}-${this.state.month + 1}-${this.state.day} ${
+          this.state.hour
+        }:${this.state.minute}`
+      ).getTime(),
       diff = waitingDate - new Date().getTime(),
       days = 0,
       hours = 0,
@@ -236,52 +300,16 @@ export default class TimePicker extends Component {
     minutes = minutes > 9 ? minutes : "0" + minutes;
     seconds = seconds > 9 ? seconds : "0" + seconds;
 
-    clearInterval(this.decreaseTime);
-
-    this.decreaseTime = null;
-
-    document.querySelector(".cover .time-picker .until-open .counter").innerText = `${days}:${hours}:${minutes}:${seconds}`;
+    document.querySelector(
+      ".cover .time-picker .until-open .counter"
+    ).innerText = `${days}:${hours}:${minutes}:${seconds}`;
 
     setTimeout(() => {
       if (diff > 0) {
-        this.decreaseTime = setInterval(() => {
-          let time = document.querySelector(".cover .time-picker .until-open .counter").innerText.split(":");
-  
-          time[0] = +time[0];
-          time[1] = +time[1];
-          time[2] = +time[2];
-          time[3] = +time[3];
-  
-          if (time[3] > 0) {
-            time[3]--;
-          } else if (time[2] > 0) {
-            time[2]--;
-            time[3] = 59;
-          } else if (time[1] > 0) {
-            time[1]--;
-            time[2] = 59;
-            time[3] = 59;
-          } else if (time[0] > 0) {
-            time[0]--;
-            time[1] = 23;
-            time[2] = 59;
-            time[3] = 59;
-          }
-  
-          time[0] = time[0] > 9 ? time[0] : "0" + time[0];
-          time[1] = time[1] > 9 ? time[1] : "0" + time[1];
-          time[2] = time[2] > 9 ? time[2] : "0" + time[2];
-          time[3] = time[3] > 9 ? time[3] : "0" + time[3];
-  
-          document.querySelector(".cover .time-picker .until-open .counter").innerText = `${time[0]}:${time[1]}:${time[2]}:${time[3]}`;
-  
-          if (time[0] === 0 && time[1] === 0 && time[2] === 0 && time[3] === 0) {
-            clearInterval(this.decreaseTime);
-          }
-        }, 1000);
+        this.decreaseTimeFunction();
       }
     }, 0);
-  }
+  };
 
   reset = () => {
     let date = new Date();
@@ -290,26 +318,32 @@ export default class TimePicker extends Component {
       month: date.getMonth(),
       day: date.getDate(),
       hour: 0,
-      minute: 0
+      minute: 0,
     });
 
-    sessionStorage.removeItem('RRS_year');
-    sessionStorage.removeItem('RRS_month');
-    sessionStorage.removeItem('RRS_day');
-    sessionStorage.removeItem('RRS_hour');
-    sessionStorage.removeItem('RRS_minute');
+    sessionStorage.removeItem("RRS_year");
+    sessionStorage.removeItem("RRS_month");
+    sessionStorage.removeItem("RRS_day");
+    sessionStorage.removeItem("RRS_hour");
+    sessionStorage.removeItem("RRS_minute");
 
-    document.querySelector(".cover .time-picker .years .year-input .year").value = date.getFullYear();
-    document.querySelector(".admin-page .cover .time-picker .hours .hour").value = "00";
-    document.querySelector(".admin-page .cover .time-picker .hours .minute").value = "00";
+    document.querySelector(
+      ".cover .time-picker .years .year-input .year"
+    ).value = date.getFullYear();
+    document.querySelector(
+      ".admin-page .cover .time-picker .hours .hour"
+    ).value = "00";
+    document.querySelector(
+      ".admin-page .cover .time-picker .hours .minute"
+    ).value = "00";
 
     setTimeout(() => {
       this.changeTemplateDay();
     }, 0);
-  }
+  };
 
   componentDidMount() {
-    this.changeTemplateDay()
+    this.changeTemplateDay();
   }
 
   render() {
@@ -425,7 +459,9 @@ export default class TimePicker extends Component {
             {">"}
           </div>
         </div>
-        <div className="days" onClick={this.changeDay}>{this.state.templateDay}</div>
+        <div className="days" onClick={this.changeDay}>
+          {this.state.templateDay}
+        </div>
         <div className="hours">
           <input
             type="number"
@@ -453,7 +489,9 @@ export default class TimePicker extends Component {
           <div className="text">بقي حتى العرض:</div>
           <div className="counter">00:00:00:00</div>
         </div>
-        <div className="reset-time" onClick={this.reset}>إعادة ضبط</div>
+        <div className="reset-time" onClick={this.reset}>
+          إعادة ضبط
+        </div>
       </div>
     );
   }
